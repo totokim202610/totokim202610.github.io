@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>정 - 캘린더&amp;다이어리&amp;가계부</title>
+<meta name="description" content="음력 달력·가계부·꾸미는 일기를 하루 한 페이지에. 서버도 인터넷 권한도 없이, 기록은 내 폰 안에만 암호화해 둬요.">
+<meta name="theme-color" content="#FFF1DF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#2B2230" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="정 · 뿅">
+<meta property="og:title" content="정 - 캘린더&amp;다이어리&amp;가계부">
+<meta property="og:description" content="음력 달력·가계부·꾸미는 일기를 하루 한 페이지에. 기록은 내 폰 안에만 암호화해 둬요.">
+<meta property="og:url" content="https://urstory.github.io/toto-apps/jeong/">
+<meta property="og:image" content="https://urstory.github.io/toto-apps/assets/jeong/feature-graphic.jpg">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="500">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="64x64" href="../assets/jeong/favicon-64.png">
+<link rel="apple-touch-icon" href="../assets/jeong/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gaegu:wght@700&family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<script src="../assets/site.js" defer></script>
+</head>
+<body class="app-jeong">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16.5" rx="3"/><path d="M8 2.5v4M16 2.5v4M3 10h18"/><circle cx="16" cy="15.5" r="2"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 18.5h3"/><path d="M9 8.5h6M9 12h4"/></symbol>
+    <symbol id="i-wallet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7.5V18a2.5 2.5 0 0 0 2.5 2.5H20V8H6.5A2.5 2.5 0 0 1 4 5.5 2.5 2.5 0 0 1 6.5 3H17v5"/><circle cx="16" cy="14.25" r="1.25" fill="currentColor"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19.5 8.5a2.8 2.8 0 0 0-4-4L4 16v4z"/><path d="M13.5 6.5l4 4"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.2 1.1 6-5.4-2.9-5.4 2.9 1.1-6L3.2 9.4l6.1-.8z"/></symbol>
+    <symbol id="i-fold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M12 5v14" stroke-dasharray="2 2.2"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10.5" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/><path d="M12 15v2"/></symbol>
+    <symbol id="i-wifi-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l18 18"/><path d="M8.5 16.2a5 5 0 0 1 7 0M5 12.6a10 10 0 0 1 4-2.3M19 12.6a10 10 0 0 0-3.2-2"/><path d="M2 9a15 15 0 0 1 4.3-2.7M22 9a15 15 0 0 0-10-4"/><circle cx="12" cy="19.5" r=".6" fill="currentColor"/></symbol>
+    <symbol id="i-user-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="8" r="4"/><path d="M3 21a7 7 0 0 1 11-5.7"/><path d="M16 16l5 5M21 16l-5 5"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l8.5 4.5v10L12 21.5 3.5 17V7z"/><path d="M3.5 7L12 11.5 20.5 7M12 11.5v10"/></symbol>
+    <symbol id="i-ad-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 4l16 16"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M8 12.5l2.7 2.7L16 9.8"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-dev-open" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="6" width="28" height="22" rx="3"/><path d="M17 6v22" stroke-dasharray="2 2"/><path d="M7 11h6M7 15h6M21 11h6M21 15h4" stroke-linecap="round"/></symbol>
+    <symbol id="i-dev-half" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M6 17L9 4h16l-3 13z"/><rect x="5" y="17" width="24" height="13" rx="2.5"/><circle cx="11" cy="23.5" r="2"/><circle cx="17" cy="23.5" r="2"/><circle cx="23" cy="23.5" r="2"/></symbol>
+    <symbol id="i-dev-widget" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><rect x="8" y="3" width="18" height="28" rx="3.5"/><rect x="11.5" y="8" width="11" height="7" rx="2"/><path d="M12 20h10M12 24h6"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#main">본문으로 바로 가기</a>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="../">
+      <span class="brand-dots" aria-hidden="true"><img src="../assets/jeong/icon-96.png" alt="" width="28" height="28"><img src="../assets/ppyong/icon-96.png" alt="" width="28" height="28"></span>
+      정 · 뿅
+    </a>
+    <nav class="topnav" aria-label="앱">
+      <a href="./" aria-current="page">정</a>
+      <a href="../ppyong/">뿅</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="app-hero" aria-labelledby="app-title">
+    <div class="wrap">
+      <div class="text">
+        <div class="id">
+          <img src="../assets/jeong/icon-192.png" alt="정 앱 아이콘" width="76" height="76">
+          <h1 id="app-title">정<span class="sub">캘린더 &amp; 다이어리 &amp; 가계부</span></h1>
+        </div>
+        <p class="lead">달력, 가계부, 꾸미는 일기를 따로 열지 않아도 돼요. 날짜를 누르면 그날의 <b>일정과 돈, 일기</b>가 한 페이지에 모여 있어요.</p>
+        <ul class="chips" aria-label="한눈에 보기">
+          <li class="chip">음력·공휴일 달력</li>
+          <li class="chip">세 번 누르는 가계부</li>
+          <li class="chip">꾸미는 하루 한 장</li>
+          <li class="chip">내 폰 안에만 저장</li>
+        </ul>
+        <div class="actions">
+          <p class="soon" role="note"><span class="dot" aria-hidden="true"></span><span>곧 Google Play에서 만나요<small>지금은 출시 준비 중이에요</small></span></p>
+          <a class="btn btn-ghost" href="#shots">화면 둘러보기</a>
+        </div>
+      </div>
+      <div class="art">
+        <picture><source srcset="../assets/jeong/chars/girl-peach.webp" type="image/webp"><img src="../assets/jeong/chars/girl-peach.png" alt="커다란 복숭아를 안고 웃는 토끼 귀 소녀" width="360" height="360"></picture>
+        <picture class="float a"><source srcset="../assets/jeong/chars/heart.webp" type="image/webp"><img src="../assets/jeong/chars/heart.png" alt="" width="160" height="160"></picture>
+        <picture class="float b"><source srcset="../assets/jeong/chars/star.webp" type="image/webp"><img src="../assets/jeong/chars/star.png" alt="" width="160" height="160"></picture>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="shots" aria-labelledby="shots-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">화면 둘러보기</span>
+        <h2 id="shots-title">이렇게 생겼어요</h2>
+      </div>
+
+      <div class="sub-head first">
+        <div><h3>폰에서</h3><p class="swipe-hint">옆으로 밀어서 더 보세요</p></div>
+        <div class="rail-nav" data-rail="rail-phone"><button type="button" data-dir="-1" aria-label="이전 화면"><svg><use href="#i-left"/></svg></button><button type="button" data-dir="1" aria-label="다음 화면"><svg><use href="#i-right"/></svg></button></div>
+      </div>
+      <ul class="rail phones" id="rail-phone" tabindex="0" aria-label="폰 화면 8장">
+        <li><figure class="shot-card"><a href="../assets/jeong/phone/01-calendar-lunar.png"><picture><source srcset="../assets/jeong/phone/01-calendar-lunar.webp" type="image/webp"><img src="../assets/jeong/phone/01-calendar-lunar.png" alt="10월 달력: 날짜마다 음력·절기·공휴일이 작게 적혀 있고, 위에 이번 달 목표 306만 / 500만 원과 진행 막대, 날짜 칸에 칭찬 도장과 폰 캘린더 일정 띠가 보여요" width="540" height="1080" loading="lazy"></picture></a><figcaption><b>음력이 함께 보이는 달력</b>절기·공휴일·대체공휴일까지 한눈에</figcaption></figure></li>
+        <li><figure class="shot-card"><a href="../assets/jeong/phone/02-day-page.png"><picture><source srcset="../assets/jeong/phone/02-day-page.webp" type="image/webp"><img src="../assets/jeong/phone/02-day-page.png" alt="10월 21일 그날 페이지: 음력 날짜와 기분, 일정 다섯 개(폰 캘린더 일정에는 '폰' 꼬리표), 아래에 그날 가계부 수입·지출 목록" width="540" height="1080" loading="lazy"></picture></a><figcaption><b>하루 한 페이지</b>그날의 일정·돈·기분이 한곳에</figcaption></figure></li>
+        <li><figure class="shot-card"><a href="../assets/jeong/phone/03-diary-deco.png"><picture><source srcset="../assets/jeong/phone/03-diary-deco.webp" type="image/webp"><img src="../assets/jeong/phone/03-diary-deco.png" alt="일기 꾸미기: 손글씨로 쓴 일기에 마스킹테이프와 반짝이 스티커가 붙어 있고, 아래 스티커 서랍에 토끼 귀 소녀 스티커들이 줄지어 있어요" width="540" height="1080" loading="lazy"></picture></a><figcaption><b>꾸미는 일기</b>속지·글꼴·스티커·마스킹테이프로</figcaption></figure></li>
+        <li><figure class="shot-card"><a href="../assets/jeong/phone/04-receipt.png"><picture><source srcset="../assets/jeong/phone/04-receipt.webp" type="image/webp"><img src="../assets/jeong/phone/04-receipt.png" alt="지출 입력: 영수증 사진에서 28,300원을 읽어 채우고 '맞나요?'라고 묻는 줄, 분류 칩과 천·만 단위 단추가 있는 숫자판" width="540" height="1080" loading="lazy"></picture></a><figcaption><b>영수증으로 금액 채우기</b>사진에서 폰 안에서 읽어요</figcaption></figure></li>
+        <li><figure class="shot-card"><a href="../assets/jeong/phone/05-ledger.png"><picture><source srcset="../assets/jeong/phone/05-ledger.webp" type="image/webp"><img src="../assets/jeong/phone/05-ledger.png" alt="가계부: 이번 달 수입 306만·지출 179만·모으고 갚은 돈·남은 돈 카드, 꾸준한 돈과 내 돈 줄, 날짜별 기록" width="540" height="1080" loading="lazy"></picture></a><figcaption><b>한눈에 보는 가계부</b>꾸준한 돈·주머니별 내 돈까지</figcaption></figure></li>
+        <li><figure class="shot-card"><a href="../assets/jeong/phone/06-sticker-book.png"><picture><source srcset="../assets/jeong/phone/06-sticker-book.webp" type="image/webp"><img src="../assets/jeong/phone/06-sticker-book.png" alt="이달의 스티커북: 날마다 기분 얼굴과 스티커가 붙은 달력, 아래에 이달의 일기 썸네일" width="540" height="1080" loading="lazy"></picture></a><figcaption><b>이달의 스티커북</b>한 달을 기분과 스티커로 모아요</figcaption></figure></li>
+        <li><figure class="shot-card"><a href="../assets/jeong/phone/07-birthday-stamp.png"><picture><source srcset="../assets/jeong/phone/07-birthday-stamp.webp" type="image/webp"><img src="../assets/jeong/phone/07-birthday-stamp.png" alt="음력 생일에 찍힌 '내 생일' 우표를 크게 본 화면: 케이크 앞의 토끼 귀 소녀와 요미 그림" width="540" height="1080" loading="lazy"></picture></a><figcaption><b>생일 우표</b>양력·음력 생일과 기념일에 찍혀요</figcaption></figure></li>
+        <li><figure class="shot-card"><a href="../assets/jeong/phone/08-phone-calendar.png"><picture><source srcset="../assets/jeong/phone/08-phone-calendar.webp" type="image/webp"><img src="../assets/jeong/phone/08-phone-calendar.png" alt="폰 일정 고치기 시트: 제목 '독서 모임', 날짜·시간·장소·메모 칸과 어느 캘린더에서 왔는지 보여 주는 한 줄" width="540" height="1080" loading="lazy"></picture></a><figcaption><b>폰 캘린더 일정도 정에서</b>켤 때만, 바로 고치거나 지워요</figcaption></figure></li>
+      </ul>
+
+      <div class="sub-head">
+        <div><h3>펼친 폴드에서</h3><p>달력과 그날 페이지를 나란히 봐요</p></div>
+        <div class="rail-nav" data-rail="rail-wide"><button type="button" data-dir="-1" aria-label="이전 화면"><svg><use href="#i-left"/></svg></button><button type="button" data-dir="1" aria-label="다음 화면"><svg><use href="#i-right"/></svg></button></div>
+      </div>
+      <ul class="rail wide" id="rail-wide" tabindex="0" aria-label="펼친 화면 3장">
+        <li><figure class="shot-card"><a href="../assets/jeong/tablet/01-fold-calendar.png"><picture><source srcset="../assets/jeong/tablet/01-fold-calendar.webp" type="image/webp"><img src="../assets/jeong/tablet/01-fold-calendar.png" alt="펼친 화면 왼쪽에 기분 얼굴과 스티커가 붙은 다꾸 보기 달력, 오른쪽에 그날 페이지(일기·가계부·일정)" width="1042" height="1080" loading="lazy"></picture></a><figcaption><b>달력 + 그날 페이지</b></figcaption></figure></li>
+        <li><figure class="shot-card"><a href="../assets/jeong/tablet/02-fold-diary.png"><picture><source srcset="../assets/jeong/tablet/02-fold-diary.webp" type="image/webp"><img src="../assets/jeong/tablet/02-fold-diary.png" alt="펼친 화면 일기 꾸미기: 왼쪽에 꾸민 일기 페이지, 오른쪽에 도구 칸과 스티커 서랍" width="1042" height="1080" loading="lazy"></picture></a><figcaption><b>넓게 꾸미는 일기</b></figcaption></figure></li>
+        <li><figure class="shot-card"><a href="../assets/jeong/tablet/03-fold-ledger.png"><picture><source srcset="../assets/jeong/tablet/03-fold-ledger.webp" type="image/webp"><img src="../assets/jeong/tablet/03-fold-ledger.png" alt="펼친 화면 왼쪽에 가계부, 오른쪽에 그날 페이지가 나란히" width="1042" height="1080" loading="lazy"></picture></a><figcaption><b>가계부 + 그날 페이지</b></figcaption></figure></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section tight" id="features" aria-labelledby="feat-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">할 수 있는 것</span>
+        <h2 id="feat-title">하루를 한 페이지에</h2>
+      </div>
+      <div class="features">
+        <article class="feat">
+          <div class="feat-h"><span class="ico"><svg aria-hidden="true"><use href="#i-cal"/></svg></span><h3>음력이 함께 보이는 달력</h3></div>
+          <ul>
+            <li>날짜마다 음력과 절기, 공휴일·대체공휴일이 함께 보여요</li>
+            <li>돈·일정·다꾸 보기를 골라 켜고, 월·3일·일·목록으로 바꿔 봐요</li>
+            <li>음력으로 반복하는 일정, 기념일 D-day, 나만의 쉬는 날</li>
+            <li>날짜를 고르는 작은 달력에도 음력이 보여요</li>
+          </ul>
+        </article>
+        <article class="feat">
+          <div class="feat-h"><span class="ico sky"><svg aria-hidden="true"><use href="#i-phone"/></svg></span><h3>폰 캘린더와 함께 <span class="tag">켤 때만</span></h3></div>
+          <ul>
+            <li>폰에 있는 캘린더 일정을 정 달력에 연하게 겹쳐 봐요</li>
+            <li>겹쳐 보이는 일정을 정에서 바로 고치거나 지울 수 있어요</li>
+            <li>정에서 만든 일정을 내가 고른 캘린더로 보내요</li>
+            <li>인터넷이 아니라 폰의 캘린더만 읽고 써요. 계정 동기화는 폰이 해요</li>
+          </ul>
+        </article>
+        <article class="feat">
+          <div class="feat-h"><span class="ico butter"><svg aria-hidden="true"><use href="#i-wallet"/></svg></span><h3>세 번 누르면 끝나는 가계부</h3></div>
+          <ul>
+            <li>분류 고르고, 금액 누르고, 저장. 천·만 단위 단추로 빠르게</li>
+            <li>영수증 사진을 붙이면 폰 안에서 금액을 읽어 채워 줘요</li>
+            <li>이번 달 목표: 모을 금액, 예산, 한 줄 다짐, 물 마시기·운동처럼 개수로 세는 목표</li>
+            <li>남은 날 기준으로 하루에 얼마면 되는지 알려 줘요</li>
+            <li>매달 나가는 돈·모으는 돈·갚는 돈과 주머니별 내 돈까지</li>
+          </ul>
+        </article>
+        <article class="feat">
+          <div class="feat-h"><span class="ico"><svg aria-hidden="true"><use href="#i-pen"/></svg></span><h3>꾸미는 하루 한 장</h3></div>
+          <ul>
+            <li>속지·글꼴·스티커·사진·마스킹테이프로 일기를 꾸며요</li>
+            <li>직접 그리거나, 그림·사진의 배경을 지워 내 스티커로 만들어요</li>
+            <li>다른 앱에서 그림을 '정'으로 공유하면 바로 내 스티커가 돼요</li>
+            <li>달력에도 스티커와 기분을 남기고, 한 달을 스티커북으로 모아요</li>
+          </ul>
+        </article>
+        <article class="feat">
+          <div class="feat-h"><span class="ico mint"><svg aria-hidden="true"><use href="#i-star"/></svg></span><h3>꾸준히 하면 생기는 것들</h3></div>
+          <ul>
+            <li>일기와 가계부를 이어 가면 모이는 배지, 그리고 숨은 배지</li>
+            <li>생일(양력·음력)과 기념일에 찍히는 우표</li>
+            <li>토끼 귀 소녀의 옷장과 테마 여섯 가지</li>
+            <li>밤에 한 줄 남기라고 요미가 알려 줘요(알림은 끌 수 있어요)</li>
+          </ul>
+        </article>
+        <article class="feat">
+          <div class="feat-h"><span class="ico sky"><svg aria-hidden="true"><use href="#i-lock"/></svg></span><h3>내 기록을 지키는 장치</h3></div>
+          <ul>
+            <li>앱 잠금(숫자 암호·지문)과 금액 가리기</li>
+            <li>두 번째 암호로 여는 가린 화면</li>
+            <li>비밀번호를 건 백업 파일로 폰을 바꿀 때 옮겨요</li>
+            <li>실수로 지운 건 바로 되돌릴 수 있어요</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tight" id="fold" aria-labelledby="fold-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">접는 폰에서도</span>
+        <h2 id="fold-title">폴드도, 플립도 편하게</h2>
+        <p>바형 폰은 물론, 접는 폰의 커버 화면·펼친 화면·반쯤 접은 모양에 맞춰 화면이 바뀌어요.</p>
+      </div>
+      <div class="fold">
+        <div class="fold-item"><svg class="dev" aria-hidden="true"><use href="#i-dev-open"/></svg><div><h3>펼치면 나란히</h3><p>달력과 그날 페이지를 양쪽에 펼쳐 봐요. 일기도 넓게 꾸며요.</p></div></div>
+        <div class="fold-item"><svg class="dev" aria-hidden="true"><use href="#i-dev-half"/></svg><div><h3>반쯤 접으면 큰 단추</h3><p>아래 화면에 수입·지출·일정 큰 단추가 나와 엄지로 바로 적어요.</p></div></div>
+        <div class="fold-item"><svg class="dev" aria-hidden="true"><use href="#i-dev-widget"/></svg><div><h3>홈 위젯</h3><p>오늘 한 줄과 이번 달 목표를 홈 화면에서 바로 봐요.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tight" id="privacy" aria-labelledby="priv-title">
+    <div class="wrap">
+      <div class="privacy">
+        <picture><source srcset="../assets/jeong/chars/yomi-wag.webp" type="image/webp"><img class="yomi" src="../assets/jeong/chars/yomi-wag.png" alt="" width="360" height="360"></picture>
+        <div class="sec-head">
+          <span class="eyebrow">개인정보</span>
+          <h2 id="priv-title">내 기록은 내 폰 안에만</h2>
+          <p>정은 인터넷에 연결하지 않아요. 일기도, 돈 기록도, 영수증 사진도 이 폰을 떠나지 않아요.</p>
+        </div>
+        <ul class="promise">
+          <li><svg aria-hidden="true"><use href="#i-wifi-off"/></svg><b>인터넷 권한 없음</b><span>앱이 인터넷을 쓸 수 없게 만들었어요</span></li>
+          <li><svg aria-hidden="true"><use href="#i-user-off"/></svg><b>회원가입 없음</b><span>계정도, 로그인도 없어요</span></li>
+          <li><svg aria-hidden="true"><use href="#i-lock"/></svg><b>암호화해서 저장</b><span>기록과 영수증 사진을 폰 안에 암호화해 둬요</span></li>
+          <li><svg aria-hidden="true"><use href="#i-ad-off"/></svg><b>광고 없음</b><span>서버도, 광고도 없어요</span></li>
+        </ul>
+        <ul class="more-list">
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>폰을 바꿀 땐 비밀번호를 건 백업 파일을 직접 만들어 옮겨요</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>'전부 지우기'는 되돌릴 수 없게 바로 지워요</li>
+        </ul>
+        <a class="btn btn-primary" href="https://urstory.github.io/jeong-privacy/">개인정보처리방침 보기 <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tight" aria-labelledby="duo-title">
+    <div class="wrap">
+      <div class="duo">
+        <img class="ic" src="../assets/ppyong/icon-192.png" alt="뿅 앱 아이콘" width="60" height="60">
+        <div>
+          <h3 id="duo-title">할 일은 뿅과 함께</h3>
+          <p>같은 폰에 할일관리 앱 '뿅'이 있으면, 뿅의 할 일을 정 달력 일정으로 받거나 정의 일정을 뿅 할 일로 보낼 수 있어요.</p>
+          <span class="note">둘은 따로따로 써도 괜찮아요.</span>
+          <a href="../ppyong/">뿅 둘러보기 →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="maker">
+      <picture><source srcset="../assets/jeong/chars/toto-letter.webp" type="image/webp"><img src="../assets/jeong/chars/toto-letter.png" alt="" width="240" height="240"></picture>
+      <p><b>만든 사람 김토토</b><br>궁금한 점이나 불편한 점은 편하게 알려 주세요.</p>
+    </div>
+    <nav aria-label="바닥 링크">
+      <ul>
+        <li><a href="mailto:toto.kim2026@gmail.com">문의 toto.kim2026@gmail.com</a></li>
+        <li><a href="https://urstory.github.io/jeong-privacy/">개인정보처리방침</a></li>
+        <li><a href="../">처음으로</a></li>
+      </ul>
+    </nav>
+    <p class="copy">정은 출시 준비 중이에요. 곧 Google Play에서 만나요.</p>
+  </div>
+</footer>
+</body>
+</html>

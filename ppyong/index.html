@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>뿅 - 할일관리</title>
+<meta name="description" content="할 일은 귀여운 몬스터로, 체크 한 번에 뿅! 반복·알림·하루 한 장까지. 회원가입도 인터넷 권한도 없이 내 폰 안에만 저장돼요.">
+<meta name="theme-color" content="#FFE9EC" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#2B2230" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="정 · 뿅">
+<meta property="og:title" content="뿅 - 할일관리">
+<meta property="og:description" content="할 일은 귀여운 몬스터로, 체크 한 번에 뿅! 반복·알림·하루 한 장까지 내 폰 안에만.">
+<meta property="og:url" content="https://urstory.github.io/toto-apps/ppyong/">
+<meta property="og:image" content="https://urstory.github.io/toto-apps/assets/ppyong/feature-graphic.jpg">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="500">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="64x64" href="../assets/ppyong/favicon-64.png">
+<link rel="apple-touch-icon" href="../assets/ppyong/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gaegu:wght@700&family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<script src="../assets/site.js" defer></script>
+</head>
+<body class="app-ppyong">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16.5" rx="3"/><path d="M8 2.5v4M16 2.5v4M3 10h18"/><circle cx="16" cy="15.5" r="2"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 18.5h3"/><path d="M9 8.5h6M9 12h4"/></symbol>
+    <symbol id="i-wallet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7.5V18a2.5 2.5 0 0 0 2.5 2.5H20V8H6.5A2.5 2.5 0 0 1 4 5.5 2.5 2.5 0 0 1 6.5 3H17v5"/><circle cx="16" cy="14.25" r="1.25" fill="currentColor"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19.5 8.5a2.8 2.8 0 0 0-4-4L4 16v4z"/><path d="M13.5 6.5l4 4"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.2 1.1 6-5.4-2.9-5.4 2.9 1.1-6L3.2 9.4l6.1-.8z"/></symbol>
+    <symbol id="i-fold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M12 5v14" stroke-dasharray="2 2.2"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10.5" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/><path d="M12 15v2"/></symbol>
+    <symbol id="i-wifi-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l18 18"/><path d="M8.5 16.2a5 5 0 0 1 7 0M5 12.6a10 10 0 0 1 4-2.3M19 12.6a10 10 0 0 0-3.2-2"/><path d="M2 9a15 15 0 0 1 4.3-2.7M22 9a15 15 0 0 0-10-4"/><circle cx="12" cy="19.5" r=".6" fill="currentColor"/></symbol>
+    <symbol id="i-user-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="8" r="4"/><path d="M3 21a7 7 0 0 1 11-5.7"/><path d="M16 16l5 5M21 16l-5 5"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l8.5 4.5v10L12 21.5 3.5 17V7z"/><path d="M3.5 7L12 11.5 20.5 7M12 11.5v10"/></symbol>
+    <symbol id="i-ad-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 4l16 16"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M8 12.5l2.7 2.7L16 9.8"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-dev-open" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="6" width="28" height="22" rx="3"/><path d="M17 6v22" stroke-dasharray="2 2"/><path d="M7 11h6M7 15h6M21 11h6M21 15h4" stroke-linecap="round"/></symbol>
+    <symbol id="i-dev-half" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M6 17L9 4h16l-3 13z"/><rect x="5" y="17" width="24" height="13" rx="2.5"/><circle cx="11" cy="23.5" r="2"/><circle cx="17" cy="23.5" r="2"/><circle cx="23" cy="23.5" r="2"/></symbol>
+    <symbol id="i-dev-widget" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><rect x="8" y="3" width="18" height="28" rx="3.5"/><rect x="11.5" y="8" width="11" height="7" rx="2"/><path d="M12 20h10M12 24h6"/></symbol>
+  </defs>
+</svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-hammer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="13" height="7" rx="3.5" transform="rotate(-30 9.5 7.5)"/><path d="M11.5 10.5l6.5 10"/></symbol>
+    <symbol id="i-repeat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2.5l3 3-3 3"/><path d="M4 11V9.5a4 4 0 0 1 4-4h12"/><path d="M7 21.5l-3-3 3-3"/><path d="M20 13v1.5a4 4 0 0 1-4 4H4"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9a6 6 0 0 1 12 0c0 6 2.5 7.5 2.5 7.5h-17S6 15 6 9z"/><path d="M10 20a2.2 2.2 0 0 0 4 0"/></symbol>
+    <symbol id="i-crown" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8l4.5 4 4-7 4 7 4.5-4-2 11h-13z"/></symbol>
+    <symbol id="i-album" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="M8 3v18"/><path d="M11.5 8.5h5M11.5 12h5"/></symbol>
+    <symbol id="i-palette" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1.4 0 2-1 1.6-2.1-.5-1.3.3-2.4 1.7-2.4H18a3 3 0 0 0 3-3A9 9 0 0 0 12 3z"/><circle cx="7.5" cy="11.5" r="1" fill="currentColor"/><circle cx="10" cy="7.5" r="1" fill="currentColor"/><circle cx="14.5" cy="7.5" r="1" fill="currentColor"/></symbol>
+    <symbol id="i-dev-flip" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><rect x="9" y="3" width="16" height="28" rx="3.5"/><path d="M9 17h16" stroke-dasharray="2 2"/><rect x="12" y="6" width="10" height="7" rx="2"/><path d="M15 9.5l1.5 1.5 3-3"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#main">본문으로 바로 가기</a>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="../">
+      <span class="brand-dots" aria-hidden="true"><img src="../assets/jeong/icon-96.png" alt="" width="28" height="28"><img src="../assets/ppyong/icon-96.png" alt="" width="28" height="28"></span>
+      정 · 뿅
+    </a>
+    <nav class="topnav" aria-label="앱">
+      <a href="../jeong/">정</a>
+      <a href="./" aria-current="page">뿅</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="app-hero" aria-labelledby="app-title">
+    <div class="wrap">
+      <div class="text">
+        <div class="id">
+          <img src="../assets/ppyong/icon-192.png" alt="뿅 앱 아이콘" width="76" height="76">
+          <h1 id="app-title">뿅<span class="sub">할일관리</span></h1>
+        </div>
+        <p class="lead">적어 둔 할 일은 작은 몬스터가 돼요. <b>체크 한 번이면 뿅!</b> 토끼 귀 소녀가 뿅망치로 깨부수고, 강아지 요미가 옆에서 같이 기뻐해요.</p>
+        <ul class="chips" aria-label="한눈에 보기">
+          <li class="chip">체크 한 번에 뿅</li>
+          <li class="chip">반복 · 알림</li>
+          <li class="chip">하루 한 장 기록</li>
+          <li class="chip">내 폰 안에만 저장</li>
+        </ul>
+        <div class="actions">
+          <p class="soon" role="note"><span class="dot" aria-hidden="true"></span><span>곧 Google Play에서 만나요<small>지금은 출시 준비 중이에요</small></span></p>
+          <a class="btn btn-ghost" href="#shots">화면 둘러보기</a>
+        </div>
+      </div>
+      <div class="art">
+        <picture><source srcset="../assets/ppyong/chars/girl-smash.webp" type="image/webp"><img src="../assets/ppyong/chars/girl-smash.png" alt="뿅망치를 힘껏 휘두르는 토끼 귀 소녀" width="480" height="480"></picture>
+        <picture class="float a"><source srcset="../assets/ppyong/chars/mon-sock.webp" type="image/webp"><img src="../assets/ppyong/chars/mon-sock.png" alt="" width="200" height="200"></picture>
+        <picture class="float b"><source srcset="../assets/ppyong/chars/mon-cloud.webp" type="image/webp"><img src="../assets/ppyong/chars/mon-cloud.png" alt="" width="200" height="200"></picture>
+        <picture class="float c"><source srcset="../assets/ppyong/chars/mon-slime.webp" type="image/webp"><img src="../assets/ppyong/chars/mon-slime.png" alt="" width="200" height="200"></picture>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="shots" aria-labelledby="shots-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">화면 둘러보기</span>
+        <h2 id="shots-title">오늘 할 일이 줄어드는 게 보여요</h2>
+      </div>
+
+      <div class="sub-head first">
+        <div><h3>폰에서</h3><p class="swipe-hint">옆으로 밀어서 더 보세요</p></div>
+        <div class="rail-nav" data-rail="rail-phone"><button type="button" data-dir="-1" aria-label="이전 화면"><svg><use href="#i-left"/></svg></button><button type="button" data-dir="1" aria-label="다음 화면"><svg><use href="#i-right"/></svg></button></div>
+      </div>
+      <ul class="rail phones" id="rail-phone" tabindex="0" aria-label="폰 화면 8장">
+        <li><figure class="shot-card"><a href="../assets/ppyong/phone/01-today.png"><picture><source srcset="../assets/ppyong/phone/01-today.webp" type="image/webp"><img src="../assets/ppyong/phone/01-today.png" alt="할 일 홈: 위쪽 분홍 무대에 토끼 귀 소녀와 몬스터, 강아지 요미가 서 있고, 아래에 반복되는 일과 오늘 할 일 카드(알림·마감 칩)가 있어요" width="607" height="1080" loading="lazy"></picture></a><figcaption><b>할 일은 귀여운 몬스터로</b>무대 위에 오늘의 몬스터가 모여요</figcaption></figure></li>
+        <li><figure class="shot-card"><a href="../assets/ppyong/phone/02-smash.png"><picture><source srcset="../assets/ppyong/phone/02-smash.webp" type="image/webp"><img src="../assets/ppyong/phone/02-smash.png" alt="뿅! 하고 깨부수는 순간: 무대에 '뿅!' 글자와 별·하트 조각이 터지고, 아래 할 일 카드에 체크 표시가 들어가요" width="607" height="1080" loading="lazy"></picture></a><figcaption><b>체크 한 번에 뿅!</b>동그라미를 누르거나 카드를 밀어요</figcaption></figure></li>
+        <li><figure class="shot-card"><a href="../assets/ppyong/phone/03-repeat-weekdays.png"><picture><source srcset="../assets/ppyong/phone/03-repeat-weekdays.webp" type="image/webp"><img src="../assets/ppyong/phone/03-repeat-weekdays.png" alt="할 일 고치기 시트: 종류 칩, 크기, 반복에서 '요일'을 골라 화·목에 표시, 시간 07:30, 알림 정시" width="607" height="1080" loading="lazy"></picture></a><figcaption><b>반복은 격자에서 콕</b>매일·요일·매월·매년(음력도)</figcaption></figure></li>
+        <li><figure class="shot-card"><a href="../assets/ppyong/phone/04-repeat-tab.png"><picture><source srcset="../assets/ppyong/phone/04-repeat-tab.webp" type="image/webp"><img src="../assets/ppyong/phone/04-repeat-tab.png" alt="반복 탭: 다음 날짜 순으로 정리된 반복 할 일 카드와 며칠째 이어 가는지 보여 주는 숫자" width="607" height="1080" loading="lazy"></picture></a><figcaption><b>반복되는 일을 한눈에</b>다음 날짜 순, 며칠째인지까지</figcaption></figure></li>
+        <li><figure class="shot-card"><a href="../assets/ppyong/phone/05-done-level-stamps.png"><picture><source srcset="../assets/ppyong/phone/05-done-level-stamps.webp" type="image/webp"><img src="../assets/ppyong/phone/05-done-level-stamps.png" alt="한 일들: 레벨 13 카드와 경험치 막대, 배지 줄, 다 끝낸 날마다 왕관 도장이 찍힌 이번 달 도장판" width="607" height="1080" loading="lazy"></picture></a><figcaption><b>레벨·배지·도장판</b>다 끝낸 날엔 왕관 도장</figcaption></figure></li>
+        <li><figure class="shot-card"><a href="../assets/ppyong/phone/06-today-page-stickers.png"><picture><source srcset="../assets/ppyong/phone/06-today-page-stickers.webp" type="image/webp"><img src="../assets/ppyong/phone/06-today-page-stickers.png" alt="오늘 한 장 꾸미기: 끝낸 일이 저절로 적힌 종이에 손글씨 한 줄과 스티커, 아래에 토끼 귀 소녀 스티커 서랍" width="607" height="1080" loading="lazy"></picture></a><figcaption><b>오늘 한 장</b>끝낸 일이 먼저 적힌 종이를 꾸며요</figcaption></figure></li>
+        <li><figure class="shot-card"><a href="../assets/ppyong/phone/07-album.png"><picture><source srcset="../assets/ppyong/phone/07-album.webp" type="image/webp"><img src="../assets/ppyong/phone/07-album.png" alt="한 장 모음: 날짜별로 꾸민 한 장 썸네일과 그날 끝낸 일 목록이 차곡차곡" width="607" height="1080" loading="lazy"></picture></a><figcaption><b>한 장 모음</b>직접 쓴 날이 차곡차곡</figcaption></figure></li>
+        <li><figure class="shot-card"><a href="../assets/ppyong/phone/08-badges.png"><picture><source srcset="../assets/ppyong/phone/08-badges.webp" type="image/webp"><img src="../assets/ppyong/phone/08-badges.png" alt="배지 판: 꾸준히·뿅 누적·종류 장인 배지가 금·은 메달과 아직 못 얻은 회색 메달로 나뉘어 있어요" width="607" height="1080" loading="lazy"></picture></a><figcaption><b>모으는 재미</b>꾸준히·종류 장인·숨은 배지</figcaption></figure></li>
+      </ul>
+
+      <div class="sub-head">
+        <div><h3>펼친 폴드에서</h3><p>무대와 목록이 나란히 보여요</p></div>
+        <div class="rail-nav" data-rail="rail-wide"><button type="button" data-dir="-1" aria-label="이전 화면"><svg><use href="#i-left"/></svg></button><button type="button" data-dir="1" aria-label="다음 화면"><svg><use href="#i-right"/></svg></button></div>
+      </div>
+      <ul class="rail wide" id="rail-wide" tabindex="0" aria-label="펼친 화면 3장">
+        <li><figure class="shot-card"><a href="../assets/ppyong/tablet/01-fold-today.png"><picture><source srcset="../assets/ppyong/tablet/01-fold-today.webp" type="image/webp"><img src="../assets/ppyong/tablet/01-fold-today.png" alt="펼친 화면 왼쪽에 큰 무대와 '오늘 한 장 써 볼까요?' 카드, 오른쪽에 반복되는 일과 할 일 목록" width="1080" height="815" loading="lazy"></picture></a><figcaption><b>큰 무대 + 할 일 목록</b></figcaption></figure></li>
+        <li><figure class="shot-card"><a href="../assets/ppyong/tablet/02-fold-album.png"><picture><source srcset="../assets/ppyong/tablet/02-fold-album.webp" type="image/webp"><img src="../assets/ppyong/tablet/02-fold-album.png" alt="펼친 화면의 한 장 모음: 꾸민 한 장이 두 줄로 나란히" width="1080" height="815" loading="lazy"></picture></a><figcaption><b>한 장 모음을 두 줄로</b></figcaption></figure></li>
+        <li><figure class="shot-card"><a href="../assets/ppyong/tablet/03-fold-done.png"><picture><source srcset="../assets/ppyong/tablet/03-fold-done.webp" type="image/webp"><img src="../assets/ppyong/tablet/03-fold-done.png" alt="펼친 화면의 한 일들: 레벨 카드, 배지 줄, 넓은 이번 달 도장판" width="1080" height="815" loading="lazy"></picture></a><figcaption><b>넓게 보는 한 일들</b></figcaption></figure></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section tight" id="features" aria-labelledby="feat-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">할 수 있는 것</span>
+        <h2 id="feat-title">끝내는 순간이 즐거워지게</h2>
+      </div>
+      <div class="features">
+        <article class="feat">
+          <div class="feat-h"><span class="ico"><svg aria-hidden="true"><use href="#i-hammer"/></svg></span><h3>체크 한 번에 뿅</h3></div>
+          <ul>
+            <li>제목·종류·크기·마감·한 줄 메모만 적으면 끝이에요</li>
+            <li>일·공부, 집안일, 몸·건강, 장보기·심부름, 연락·약속, 나·취미 — 종류마다 몬스터가 달라요</li>
+            <li>동그라미를 누르거나 카드를 오른쪽으로 밀면 뿅!</li>
+            <li>잘못 눌렀으면 '한 일들'에서 체크를 풀면 돼요</li>
+          </ul>
+        </article>
+        <article class="feat">
+          <div class="feat-h"><span class="ico sky"><svg aria-hidden="true"><use href="#i-repeat"/></svg></span><h3>반복되는 일</h3></div>
+          <ul>
+            <li>매일, 요일(여러 개), 매월(말일도), 매년(음력도) 반복을 격자에서 콕</li>
+            <li>'반복' 탭에서 다음 날짜 순으로 보고, 며칠째 이어 가는지 확인해요</li>
+            <li>잠깐 멈추거나 고칠 수 있어요</li>
+            <li>날짜를 고를 때 음력과 공휴일이 작게 함께 보여요</li>
+          </ul>
+        </article>
+        <article class="feat">
+          <div class="feat-h"><span class="ico butter"><svg aria-hidden="true"><use href="#i-bell"/></svg></span><h3>알림과 한 일들</h3></div>
+          <ul>
+            <li>정시·10분 전·30분 전·1시간 전·전날 저녁·당일 아침 중 필요한 알림만 골라요</li>
+            <li>알림 안의 "뿅!" 단추로 앱을 열지 않고도 끝낼 수 있어요</li>
+            <li>한 일들: 날짜별로 끝낸 일을 모아 보고, 다 끝낸 날엔 왕관 도장이 찍혀요</li>
+          </ul>
+        </article>
+        <article class="feat">
+          <div class="feat-h"><span class="ico"><svg aria-hidden="true"><use href="#i-album"/></svg></span><h3>오늘 한 장</h3></div>
+          <ul>
+            <li>오늘 끝낸 일이 먼저 적힌 종이에 글을 쓰고 꾸며요</li>
+            <li>스티커·사진·마스킹 테이프·손글씨</li>
+            <li>그림이나 사진으로 '내 스티커'를 만들어요. 배경 지우기와 흰 테두리도 앱 안에서</li>
+            <li>직접 쓴 날은 '한 장 모음'에 차곡차곡 모여요</li>
+          </ul>
+        </article>
+        <article class="feat">
+          <div class="feat-h"><span class="ico mint"><svg aria-hidden="true"><use href="#i-crown"/></svg></span><h3>자라는 나의 뿅</h3></div>
+          <ul>
+            <li>뿅 할수록 레벨이 오르고, 리본·별빛·무지개 왕관 뿅망치를 차례로 얻어요</li>
+            <li>꾸준히·종류 장인·숨은 배지, 계절마다 다른 몬스터 도감</li>
+            <li>계절 따라 무대에 꽃잎·잎·눈이 흩날려요</li>
+            <li>며칠 쉬었다 와도 괜찮아요. 하나만 뿅 하면 다시 시작이에요</li>
+          </ul>
+        </article>
+        <article class="feat">
+          <div class="feat-h"><span class="ico sky"><svg aria-hidden="true"><use href="#i-palette"/></svg></span><h3>내 마음대로</h3></div>
+          <ul>
+            <li>복숭아·꿀·구름·민트·라벤더 테마, 어두울 때 밤 테마</li>
+            <li>소리·진동, 연출 짧게 켜고 끄기</li>
+            <li>지울 때 한 번 묻기도 고를 수 있어요</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tight" id="fold" aria-labelledby="fold-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">접는 폰에서도</span>
+        <h2 id="fold-title">폴드도, 플립도 편하게</h2>
+        <p>바형 폰은 물론, 접는 폰의 커버 화면·펼친 화면·반쯤 접은 모양에 맞춰 화면이 바뀌어요.</p>
+      </div>
+      <div class="fold">
+        <div class="fold-item"><svg class="dev" aria-hidden="true"><use href="#i-dev-flip"/></svg><div><h3>커버 화면에서 바로 뿅</h3><p>폰을 펴지 않아도 작은 커버 화면에서 할 일을 끝낼 수 있어요.</p></div></div>
+        <div class="fold-item"><svg class="dev" aria-hidden="true"><use href="#i-dev-open"/></svg><div><h3>펼치면 나란히</h3><p>큰 무대와 할 일 목록이 양쪽에 나란히 보여요.</p></div></div>
+        <div class="fold-item"><svg class="dev" aria-hidden="true"><use href="#i-dev-half"/></svg><div><h3>반쯤 접어도</h3><p>반쯤 접어 세운 모양에도 화면이 맞춰져요.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tight" id="privacy" aria-labelledby="priv-title">
+    <div class="wrap">
+      <div class="privacy">
+        <picture><source srcset="../assets/ppyong/chars/yomi-cheer.webp" type="image/webp"><img class="yomi" src="../assets/ppyong/chars/yomi-cheer.png" alt="" width="360" height="360"></picture>
+        <div class="sec-head">
+          <span class="eyebrow">개인정보</span>
+          <h2 id="priv-title">내 기록은 내 폰 안에만</h2>
+          <p>뿅은 인터넷에 연결하지 않아요. 할 일과 오늘 한 장은 이 기기 안에만 저장돼요.</p>
+        </div>
+        <ul class="promise">
+          <li><svg aria-hidden="true"><use href="#i-wifi-off"/></svg><b>인터넷 권한 없음</b><span>앱이 인터넷을 쓸 수 없게 만들었어요</span></li>
+          <li><svg aria-hidden="true"><use href="#i-user-off"/></svg><b>회원가입 없음</b><span>계정도, 로그인도, 서버도 없어요</span></li>
+          <li><svg aria-hidden="true"><use href="#i-bell"/></svg><b>알림도 기기 안에서</b><span>알림은 폰 안에서만 예약돼요</span></li>
+          <li><svg aria-hidden="true"><use href="#i-ad-off"/></svg><b>광고 없음</b><span>보이는 건 몬스터뿐이에요</span></li>
+        </ul>
+        <ul class="more-list">
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>설정의 '전부 지우기'는 한 번 더 묻고, 되돌릴 수 없게 바로 지워요</li>
+        </ul>
+        <a class="btn btn-primary" href="https://urstory.github.io/jeong-privacy/ppyong/">개인정보처리방침 보기 <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tight" aria-labelledby="duo-title">
+    <div class="wrap">
+      <div class="duo">
+        <img class="ic" src="../assets/jeong/icon-192.png" alt="정 앱 아이콘" width="60" height="60">
+        <div>
+          <h3 id="duo-title">정과 함께 쓰면</h3>
+          <p>같은 폰에 '정 - 캘린더&amp;다이어리&amp;가계부'가 있으면, 할 일을 정 달력 일정으로 보내거나 정의 일정을 뿅 할 일로 가져올 수 있어요.</p>
+          <span class="note">정이 없어도 뿅의 모든 기능을 그대로 쓸 수 있어요.</span>
+          <a href="../jeong/">정 둘러보기 →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="maker">
+      <picture><source srcset="../assets/jeong/chars/toto-letter.webp" type="image/webp"><img src="../assets/jeong/chars/toto-letter.png" alt="" width="240" height="240"></picture>
+      <p><b>만든 사람 김토토</b><br>궁금한 점이나 불편한 점은 편하게 알려 주세요.</p>
+    </div>
+    <nav aria-label="바닥 링크">
+      <ul>
+        <li><a href="mailto:toto.kim2026@gmail.com">문의 toto.kim2026@gmail.com</a></li>
+        <li><a href="https://urstory.github.io/jeong-privacy/ppyong/">개인정보처리방침</a></li>
+        <li><a href="../">처음으로</a></li>
+      </ul>
+    </nav>
+    <p class="copy">뿅은 출시 준비 중이에요. 곧 Google Play에서 만나요.</p>
+  </div>
+</footer>
+</body>
+</html>
