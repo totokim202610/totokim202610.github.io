@@ -7,7 +7,7 @@ GitHub Pages에 올려 `https://urstory.github.io/toto-apps/`에서 보는 것�
 - 글꼴: Google Fonts의 Noto Sans KR(본문)·Jua(제목, 앱과 같은 글꼴)·Gaegu(손글씨 한 줄), 못 불러오면 시스템 한글 글꼴
 - 색: 두 앱 `lib/design/palette.dart`의 복숭아 테마 토큰, 어두운 모드는 코코아밤/밤 테마
 - 모든 경로가 상대 경로라 하위 경로(`/toto-apps/`)에서도 그대로 동작해요
-- 출시 전이라 스토어 링크는 없고 "곧 Google Play에서 만나요" 안내만 있어요
+- 베타(비공개) 테스트 중이라 "지금은 베타 테스트 중이에요 — 테스터만 받을 수 있어요" 안내와 Google Play QR(컴퓨터에서만 보임)이 있어요. 정식 출시 뒤 받기 단추로 바꾼다
 
 ## 폴더
 
