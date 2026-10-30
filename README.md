@@ -62,4 +62,5 @@ python tools/build_assets.py <devel/apps 폴더>
 - 만든 사람 표시는 **김토토**, 문의는 `toto.kim2026@gmail.com`.
 - 스토어에 올라가면 각 앱 페이지의 `.soon` 안내를 실제 Google Play 링크 단추로 바꿔요.
 - `og:url`·`og:image`는 공유 미리보기 때문에 절대 주소(`https://totokim202610.github.io/...`)예요. 저장소 이름이나 주소가 바뀌면 같이 고쳐요.
+- `assets/site.css`를 고치면 모든 HTML의 `site.css?v=날짜` 값을 같이 올려요. 안 올리면 브라우저가 10분 동안 옛 CSS를 써서 새 페이지가 깨져 보여요.
 - 개인정보처리방침 원본은 `jeong-privacy` 저장소(`https://urstory.github.io/jeong-privacy/`, 앱과 Google Play에 등록된 주소)예요. `jeong/privacy/`·`ppyong/privacy/`는 그 사본이라, 원본을 고치면 여기도 똑같이 복사해요.
