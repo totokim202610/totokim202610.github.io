@@ -1,16 +1,16 @@
-"""다꾸 노트 글 목록을 글 파일에서 다시 만든다.
+"""소식과 팁 글 목록을 글 파일에서 다시 만든다.
 
-글(guide/<이름>/index.html)을 하나 더하거나 고친 뒤 실행하면 세 곳이 같이 바뀐다.
-  - guide/index.html  : 모든 글 카드(최신이 위)
-  - index.html        : 첫 화면 아래 "다꾸 노트" 칸, 최신 HOME_COUNT편
-  - sitemap.xml       : guide/와 글마다 한 줄
+글(notes/<이름>/index.html)을 하나 더하거나 고친 뒤 실행하면 세 곳이 같이 바뀐다.
+  - notes/index.html  : 모든 글 카드(최신이 위)
+  - index.html        : 첫 화면 아래 "소식과 팁" 칸, 최신 HOME_COUNT편
+  - sitemap.xml       : notes/와 글마다 한 줄
 
 글 파일에서 읽는 것: <h1>(카드 제목), og:description(카드 설명), article:published_time(날짜),
 og:image(카드 그림 — 같은 이름의 .webp가 있으면 같이 씀).
-각 파일의 <!-- guide:start --> … <!-- guide:end --> 사이만 바꾸고 나머지는 건드리지 않는다.
+각 파일의 <!-- notes:start --> … <!-- notes:end --> 사이만 바꾸고 나머지는 건드리지 않는다.
 
-사용: python tools/build_guide.py           만들기
-      python tools/build_guide.py --check   바꿀 게 있으면 알리고 종료 코드 1 (check_links.py도 부름)
+사용: python tools/build_notes.py           만들기
+      python tools/build_notes.py --check   바꿀 게 있으면 알리고 종료 코드 1 (check_links.py도 부름)
 """
 import html
 import re
@@ -20,7 +20,7 @@ from pathlib import Path
 SITE = Path(__file__).resolve().parent.parent
 BASE = "https://totokim202610.github.io/"
 HOME_COUNT = 3
-START, END = "<!-- guide:start -->", "<!-- guide:end -->"
+START, END = "<!-- notes:start -->", "<!-- notes:end -->"
 WEEKDAY = "월화수목금토일"
 
 
@@ -31,7 +31,7 @@ def meta(text, prop):
 
 def read_posts():
     posts = []
-    for page in sorted((SITE / "guide").glob("*/index.html")):
+    for page in sorted((SITE / "notes").glob("*/index.html")):
         text = page.read_text(encoding="utf-8")
         h1 = re.search(r"<h1[^>]*>(.*?)</h1>", text, re.S)
         date = meta(text, "article:published_time")
@@ -61,7 +61,7 @@ def card(post, prefix, heading, lazy):
     loading = ' loading="lazy"' if lazy else ""
     return (
         f'        <li>\n'
-        f'          <a href="{prefix}guide/{post["slug"]}/">\n'
+        f'          <a href="{prefix}notes/{post["slug"]}/">\n'
         f'            <picture>{source}<img src="{prefix}{post["image"]}" alt="" width="1200" height="800"{loading}></picture>\n'
         f'            <div class="txt">\n'
         f'              <{heading}>{esc(post["title"])}</{heading}>\n'
@@ -73,23 +73,23 @@ def card(post, prefix, heading, lazy):
     )
 
 
-def guide_block(posts):
+def notes_block(posts):
     cards = "".join(card(p, "../", "h2", i > 1) for i, p in enumerate(posts))
-    return f'\n      <ul class="guide-list">\n{cards}      </ul>\n      '
+    return f'\n      <ul class="notes-list">\n{cards}      </ul>\n      '
 
 
 def home_block(posts):
     cards = "".join(card(p, "", "h3", True) for p in posts[:HOME_COUNT])
     return (
-        '\n  <section class="section home-guide" aria-labelledby="guide-title">\n'
+        '\n  <section class="section home-notes" aria-labelledby="notes-title">\n'
         '    <div class="wrap">\n'
         '      <div class="sec-head">\n'
         '        <span class="eyebrow">매일 하나씩</span>\n'
-        '        <h2 id="guide-title">다꾸 노트</h2>\n'
-        '        <p>다이어리 꾸미기를 조금 더 즐겁게. 짧은 이야기를 하루에 하나씩 적어요.</p>\n'
+        '        <h2 id="notes-title">소식과 팁</h2>\n'
+        '        <p>다꾸, 기록하는 습관, 하루를 가볍게 하는 요령과 정·뿅 소식을 하루에 하나씩 적어요.</p>\n'
         '      </div>\n'
-        f'      <ul class="guide-list">\n{cards}      </ul>\n'
-        '      <a class="btn btn-ghost all" href="guide/">다꾸 노트 모두 보기 '
+        f'      <ul class="notes-list">\n{cards}      </ul>\n'
+        '      <a class="btn btn-ghost all" href="notes/">소식과 팁 모두 보기 '
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>\n'
         '    </div>\n'
         '  </section>\n  '
@@ -100,7 +100,7 @@ def sitemap_block(posts):
     def url(path, date):
         return f"  <url>\n    <loc>{BASE}{path}</loc>\n    <lastmod>{date}</lastmod>\n  </url>\n"
     newest = posts[0]["date"] if posts else ""
-    return "\n" + url("guide/", newest) + "".join(url(f'guide/{p["slug"]}/', p["date"]) for p in posts) + "  "
+    return "\n" + url("notes/", newest) + "".join(url(f'notes/{p["slug"]}/', p["date"]) for p in posts) + "  "
 
 
 def replace_block(path, block):
@@ -119,7 +119,7 @@ def main():
     check = "--check" in sys.argv
     posts = read_posts()
     stale = []
-    for rel, block in (("guide/index.html", guide_block(posts)), ("index.html", home_block(posts)), ("sitemap.xml", sitemap_block(posts))):
+    for rel, block in (("notes/index.html", notes_block(posts)), ("index.html", home_block(posts)), ("sitemap.xml", sitemap_block(posts))):
         path = SITE / rel
         old, new = replace_block(path, block)
         if old != new:
@@ -128,9 +128,9 @@ def main():
                 path.write_bytes(new.encode("utf-8"))
     if check:
         if stale:
-            print("다꾸 노트 목록이 글과 다름:", ", ".join(stale), "→ python tools/build_guide.py")
+            print("소식과 팁 목록이 글과 다름:", ", ".join(stale), "→ python tools/build_notes.py")
             return 1
-        print(f"다꾸 노트 목록 맞음(글 {len(posts)}편)")
+        print(f"소식과 팁 목록 맞음(글 {len(posts)}편)")
         return 0
     print(f"글 {len(posts)}편 — 고친 파일: {', '.join(stale) or '없음'}")
     return 0

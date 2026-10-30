@@ -64,6 +64,8 @@ def check_seo(page, text, sitemap):
         return []
     rel = page.relative_to(SITE)
     url = SITE_URL + ("" if page.parent == SITE else page.parent.relative_to(SITE).as_posix() + "/")
+    if 'content="noindex"' in text:  # 옛 주소에서 새 주소로 넘겨 주는 페이지: 검색에 안 내보낸다
+        return [f"{rel}: noindex 페이지가 sitemap에 들어 있음"] if url in sitemap else []
     out = []
     title = re.search(r"<title>(.*?)</title>", text, re.S)
     desc = re.search(r'<meta name="description" content="([^"]*)"', text)
@@ -130,11 +132,11 @@ def main():
         print("문제:", *bad, sep="\n  ")
         sys.exit(1)
     print("깨진 링크·그림 없음")
-    # 다꾸 노트 목록(첫 화면·guide/·sitemap)이 글 파일과 맞는지도 여기서 같이 본다
+    # 소식과 팁 목록(첫 화면·notes/·sitemap)이 글 파일과 맞는지도 여기서 같이 본다
     sys.path.insert(0, str(Path(__file__).resolve().parent))
-    import build_guide
+    import build_notes
     sys.argv = [sys.argv[0], "--check"]
-    if build_guide.main():
+    if build_notes.main():
         sys.exit(1)
 
 

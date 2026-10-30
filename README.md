@@ -16,8 +16,8 @@ GitHub Pages(계정 `totokim202610`, 저장소 `totokim202610.github.io`)에 올
 index.html            첫 화면: 두 앱 나란히
 jeong/index.html      정 소개
 ppyong/index.html     뿅 소개
-guide/index.html      다꾸 노트 목록(새 글은 맨 위에)
-guide/<글>/index.html 다꾸 노트 글 하나 = 폴더 하나(영어 kebab-case), 그림은 assets/guide/<글>/
+notes/index.html      소식과 팁 목록(새 글은 맨 위에)
+notes/<글>/index.html 소식과 팁 글 하나 = 폴더 하나(영어 kebab-case), 그림은 assets/notes/<글>/
 jeong/privacy/        정 개인정보처리방침(사본)
 ppyong/privacy/       뿅 개인정보처리방침(사본)
 assets/site.css       공통 스타일(색 토큰·라이트/다크)
@@ -28,14 +28,14 @@ sitemap.xml           검색 엔진용 페이지 목록(페이지를 더하거�
 robots.txt            모두 허용 + sitemap 주소
 googledd2337cf31b412ab.html  Google Search Console 소유권 확인(지우지 않아요)
 tools/build_assets.py 앱 저장소에서 그림을 웹용으로 다시 만드는 스크립트
-tools/build_guide.py  다꾸 노트 목록(첫 화면 아래 칸·guide/ 목록·sitemap)을 글 파일에서 다시 만듦
-tools/check_links.py  깨진 링크·그림·alt, css·js ?v= 값, 다꾸 노트 목록이 맞는지 검사(--fix: ?v= 고침)
+tools/build_notes.py  소식과 팁 목록(첫 화면 아래 칸·notes/ 목록·sitemap)을 글 파일에서 다시 만듦
+tools/check_links.py  깨진 링크·그림·alt, css·js ?v= 값, 소식과 팁 목록이 맞는지 검사(--fix: ?v= 고침)
 ```
 
-## 다꾸 노트 글 올리기
+## 소식과 팁 글 올리기
 
-1. `guide/<영어-kebab>/index.html`을 만든다(앞 글을 복사). `<h1>`, `og:description`, `article:published_time`(YYYY-MM-DD), `og:image`(`https://totokim202610.github.io/assets/guide/<글>/hero.jpg`)는 꼭 채운다. 그림은 `assets/guide/<글>/`에 jpg+webp.
-2. `python tools/build_guide.py` — 첫 화면 아래 "다꾸 노트" 칸(최신 3편, 맨 위 글은 큰 카드), `guide/` 목록, `sitemap.xml`이 저절로 바뀐다. 이 세 곳의 `<!-- guide:start -->`~`<!-- guide:end -->` 사이는 직접 고치지 않는다.
+1. `notes/<영어-kebab>/index.html`을 만든다(앞 글을 복사). `<h1>`, `og:description`, `article:published_time`(YYYY-MM-DD), `og:image`(`https://totokim202610.github.io/assets/notes/<글>/hero.jpg`)는 꼭 채운다. 그림은 `assets/notes/<글>/`에 jpg+webp.
+2. `python tools/build_notes.py` — 첫 화면 아래 "소식과 팁" 칸(최신 3편, 맨 위 글은 큰 카드), `notes/` 목록, `sitemap.xml`이 저절로 바뀐다. 이 세 곳의 `<!-- notes:start -->`~`<!-- notes:end -->` 사이는 직접 고치지 않는다.
 3. `site.css`·`site.js`를 고쳤다면 `python tools/check_links.py --fix`.
 4. `python tools/check_links.py`가 통과해야 올린다. 목록을 안 다시 만들었거나 `?v=`가 옛 값이면 여기서 실패한다.
 
