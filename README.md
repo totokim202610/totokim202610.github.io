@@ -16,6 +16,8 @@ GitHub Pages(계정 `totokim202610`, 저장소 `totokim202610.github.io`)에 올
 index.html            첫 화면: 두 앱 나란히
 jeong/index.html      정 소개
 ppyong/index.html     뿅 소개
+guide/index.html      다꾸 노트 목록(새 글은 맨 위에)
+guide/<글>/index.html 다꾸 노트 글 하나 = 폴더 하나(영어 kebab-case), 그림은 assets/guide/<글>/
 jeong/privacy/        정 개인정보처리방침(사본)
 ppyong/privacy/       뿅 개인정보처리방침(사본)
 assets/site.css       공통 스타일(색 토큰·라이트/다크)
