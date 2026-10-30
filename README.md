@@ -2,7 +2,7 @@
 
 두 안드로이드 앱 **정 - 캘린더&다이어리&가계부**와 **뿅 - 할일관리**를 소개하는 정적 웹사이트예요.
 GitHub Pages(계정 `totokim202610`, 저장소 `totokim202610.github.io`)에 올려 `https://totokim202610.github.io/`에서 봐요.
-예전 주소 `https://urstory.github.io/toto-apps/`(저장소 urstory/toto-apps)는 손대지 않고 그대로 둬요.
+예전 주소 `https://urstory.github.io/toto-apps/`는 2026-10-31에 GitHub Pages를 껐어요(저장소 urstory/toto-apps만 남음, 검색에서 같은 내용이 둘로 잡히지 않게).
 
 - 바닐라 HTML/CSS + 아주 작은 JS(갤러리 좌우 단추) — 빌드 없음, 외부 라이브러리 없음
 - 글꼴: Google Fonts의 Noto Sans KR(본문)·Jua(제목, 앱과 같은 글꼴)·Gaegu(손글씨 한 줄), 못 불러오면 시스템 한글 글꼴
