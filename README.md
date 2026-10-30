@@ -1,12 +1,13 @@
 # 정 · 뿅 소개 사이트
 
 두 안드로이드 앱 **정 - 캘린더&다이어리&가계부**와 **뿅 - 할일관리**를 소개하는 정적 웹사이트예요.
-GitHub Pages에 올려 `https://urstory.github.io/toto-apps/`에서 보는 것을 기준으로 만들었어요.
+GitHub Pages(계정 `totokim202610`, 저장소 `totokim202610.github.io`)에 올려 `https://totokim202610.github.io/`에서 봐요.
+예전 주소 `https://urstory.github.io/toto-apps/`(저장소 urstory/toto-apps)는 손대지 않고 그대로 둬요.
 
 - 바닐라 HTML/CSS + 아주 작은 JS(갤러리 좌우 단추) — 빌드 없음, 외부 라이브러리 없음
 - 글꼴: Google Fonts의 Noto Sans KR(본문)·Jua(제목, 앱과 같은 글꼴)·Gaegu(손글씨 한 줄), 못 불러오면 시스템 한글 글꼴
 - 색: 두 앱 `lib/design/palette.dart`의 복숭아 테마 토큰, 어두운 모드는 코코아밤/밤 테마
-- 모든 경로가 상대 경로라 하위 경로(`/toto-apps/`)에서도 그대로 동작해요
+- 모든 경로가 상대 경로라 루트(`/`)와 하위 경로(`/toto-apps/`) 어디서나 그대로 동작해요
 - 베타(비공개) 테스트 중이라 "지금은 베타 테스트 중이에요 — 테스터만 받을 수 있어요" 안내와 Google Play QR(컴퓨터에서만 보임)이 있어요. 정식 출시 뒤 받기 단추로 바꾼다
 
 ## 폴더
@@ -15,6 +16,8 @@ GitHub Pages에 올려 `https://urstory.github.io/toto-apps/`에서 보는 것�
 index.html            첫 화면: 두 앱 나란히
 jeong/index.html      정 소개
 ppyong/index.html     뿅 소개
+jeong/privacy/        정 개인정보처리방침(사본)
+ppyong/privacy/       뿅 개인정보처리방침(사본)
 assets/site.css       공통 스타일(색 토큰·라이트/다크)
 assets/site.js        갤러리 좌우 단추
 assets/jeong/         정 그림(phone/ 8장, tablet/ 3장, 아이콘, 피처 그래픽, chars/ 캐릭터)
@@ -53,4 +56,5 @@ python tools/build_assets.py <devel/apps 폴더>
 - 다정한 해요체, 과장하지 않기, 다른 제품 이름 쓰지 않기.
 - 만든 사람 표시는 **김토토**, 문의는 `toto.kim2026@gmail.com`.
 - 스토어에 올라가면 각 앱 페이지의 `.soon` 안내를 실제 Google Play 링크 단추로 바꿔요.
-- `og:url`·`og:image`는 공유 미리보기 때문에 절대 주소(`https://urstory.github.io/toto-apps/...`)예요. 저장소 이름이나 주소가 바뀌면 같이 고쳐요.
+- `og:url`·`og:image`는 공유 미리보기 때문에 절대 주소(`https://totokim202610.github.io/...`)예요. 저장소 이름이나 주소가 바뀌면 같이 고쳐요.
+- 개인정보처리방침 원본은 `jeong-privacy` 저장소(`https://urstory.github.io/jeong-privacy/`, 앱과 Google Play에 등록된 주소)예요. `jeong/privacy/`·`ppyong/privacy/`는 그 사본이라, 원본을 고치면 여기도 똑같이 복사해요.
