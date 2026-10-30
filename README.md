@@ -28,8 +28,16 @@ sitemap.xml           검색 엔진용 페이지 목록(페이지를 더하거�
 robots.txt            모두 허용 + sitemap 주소
 googledd2337cf31b412ab.html  Google Search Console 소유권 확인(지우지 않아요)
 tools/build_assets.py 앱 저장소에서 그림을 웹용으로 다시 만드는 스크립트
-tools/check_links.py  깨진 링크·그림·alt 검사
+tools/build_guide.py  다꾸 노트 목록(첫 화면 아래 칸·guide/ 목록·sitemap)을 글 파일에서 다시 만듦
+tools/check_links.py  깨진 링크·그림·alt, css·js ?v= 값, 다꾸 노트 목록이 맞는지 검사(--fix: ?v= 고침)
 ```
+
+## 다꾸 노트 글 올리기
+
+1. `guide/<영어-kebab>/index.html`을 만든다(앞 글을 복사). `<h1>`, `og:description`, `article:published_time`(YYYY-MM-DD), `og:image`(`https://totokim202610.github.io/assets/guide/<글>/hero.jpg`)는 꼭 채운다. 그림은 `assets/guide/<글>/`에 jpg+webp.
+2. `python tools/build_guide.py` — 첫 화면 아래 "다꾸 노트" 칸(최신 3편, 맨 위 글은 큰 카드), `guide/` 목록, `sitemap.xml`이 저절로 바뀐다. 이 세 곳의 `<!-- guide:start -->`~`<!-- guide:end -->` 사이는 직접 고치지 않는다.
+3. `site.css`·`site.js`를 고쳤다면 `python tools/check_links.py --fix`.
+4. `python tools/check_links.py`가 통과해야 올린다. 목록을 안 다시 만들었거나 `?v=`가 옛 값이면 여기서 실패한다.
 
 ## 로컬에서 보기
 
@@ -62,5 +70,5 @@ python tools/build_assets.py <devel/apps 폴더>
 - 만든 사람 표시는 **김토토**, 문의는 `toto.kim2026@gmail.com`.
 - 스토어에 올라가면 각 앱 페이지의 `.soon` 안내를 실제 Google Play 링크 단추로 바꿔요.
 - `og:url`·`og:image`는 공유 미리보기 때문에 절대 주소(`https://totokim202610.github.io/...`)예요. 저장소 이름이나 주소가 바뀌면 같이 고쳐요.
-- `assets/site.css`를 고치면 모든 HTML의 `site.css?v=날짜` 값을 같이 올려요. 안 올리면 브라우저가 10분 동안 옛 CSS를 써서 새 페이지가 깨져 보여요.
+- `assets/site.css`·`site.js`를 고치면 `python tools/check_links.py --fix`로 모든 HTML의 `?v=` 값(파일 내용 해시)을 바꿔요. 안 바꾸면 브라우저가 10분 동안 옛 파일을 써서 새 페이지가 깨져 보여요(검사가 실패해서 알려 줘요).
 - 개인정보처리방침 원본은 `jeong-privacy` 저장소(`https://urstory.github.io/jeong-privacy/`, 앱과 Google Play에 등록된 주소)예요. `jeong/privacy/`·`ppyong/privacy/`는 그 사본이라, 원본을 고치면 여기도 똑같이 복사해요.

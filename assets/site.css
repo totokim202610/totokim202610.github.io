@@ -319,12 +319,24 @@ h1, h2, h3 { font-family: var(--font-cute); font-weight: 400; line-height: 1.3; 
 .guide-list h2 { font-size: 22px; }
 .guide-list p { margin: 6px 0 0; font-size: 15px; color: var(--text-sub); line-height: 1.6; }
 .guide-list time { display: block; margin-top: 8px; font-size: 13px; color: var(--text-sub); }
+.home-guide { padding-top: 12px; }
+.home-guide .all { margin-top: 18px; }
+.guide-list h3 { font-size: 21px; }
 @media (min-width: 720px) {
   .post { padding-top: 48px; }
   .post figure { margin: 30px -40px; }
   .post figure img { border-radius: var(--r-card); }
   .post figcaption { padding: 10px 40px 0; }
   .guide-list { grid-template-columns: 1fr 1fr; }
+}
+/* 첫 화면: 최신 글은 한 줄 전체를 쓰는 큰 카드(그림 왼쪽·글 오른쪽), 나머지는 두 칸 */
+@media (min-width: 880px) {
+  .home-guide .guide-list li:first-child { grid-column: 1 / -1; }
+  .home-guide .guide-list li:first-child a { grid-template-columns: 1.15fr 1fr; align-items: center; }
+  .home-guide .guide-list li:first-child img { height: 100%; }
+  .home-guide .guide-list li:first-child .txt { padding: 28px 36px; }
+  .home-guide .guide-list li:first-child h3 { font-size: 30px; }
+  .home-guide .guide-list li:first-child p { font-size: 17px; margin-top: 12px; }
 }
 
 /* ── 넓은 화면 ─────────────────────────── */
