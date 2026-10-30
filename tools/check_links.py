@@ -7,6 +7,7 @@
 """
 import hashlib
 import re
+import xml.etree.ElementTree as ET
 import sys
 from html.parser import HTMLParser
 from pathlib import Path
@@ -58,6 +59,30 @@ class Collect(HTMLParser):
             self.no_alt.append(a.get("src"))
 
 
+def read_sitemap(bad):
+    """sitemap.xml을 진짜 XML로 읽는다. 브라우저는 깨진 XML도 글자를 보여 주지만 검색 엔진은 통째로 거절한다."""
+    path = SITE / "sitemap.xml"
+    data = path.read_bytes()
+    if re.search(rb"[\x00-\x08\x0b\x0c\x0e-\x1f]", data):
+        bad.append("sitemap.xml: 보이지 않는 제어 문자가 들어 있음")
+    try:
+        root = ET.fromstring(data)
+    except ET.ParseError as e:
+        bad.append(f"sitemap.xml: XML 오류 {e}")
+        return set()
+    ns = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
+    if root.tag != ns + "urlset":
+        bad.append("sitemap.xml: 맨 바깥이 <urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">가 아님")
+    locs = [u.findtext(ns + "loc", "").strip() for u in root.findall(ns + "url")]
+    for u in root.findall(ns + "url"):
+        lastmod = u.findtext(ns + "lastmod", "")
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", lastmod):
+            bad.append(f"sitemap.xml: {u.findtext(ns + 'loc')} lastmod가 YYYY-MM-DD가 아님")
+    if len(locs) != len(set(locs)):
+        bad.append("sitemap.xml: 같은 주소가 두 번 있음")
+    return set(locs)
+
+
 def check_seo(page, text, sitemap):
     """검색에 필요한 기본: 제목·설명·대표 주소(canonical)·h1 하나, sitemap과 맞는지."""
     if page.name != "index.html":  # 소유권 확인 파일 같은 것은 빼고
@@ -93,7 +118,7 @@ def main():
     pages = sorted(SITE.rglob("*.html"))
     if "--fix" in sys.argv:
         fix_versions(pages)
-    sitemap = set(re.findall(r"<loc>([^<]+)</loc>", (SITE / "sitemap.xml").read_text(encoding="utf-8")))
+    sitemap = read_sitemap(bad)
     for page in pages:
         text = page.read_text(encoding="utf-8")
         bad += check_seo(page, text, sitemap)
