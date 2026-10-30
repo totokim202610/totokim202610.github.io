@@ -13,6 +13,7 @@ from pathlib import Path
 from urllib.parse import urlparse, unquote
 
 SITE = Path(__file__).resolve().parent.parent
+SITE_URL = "https://totokim202610.github.io/"
 # href="../assets/site.css?v=1a2b3c4d" 처럼 사이트 안 .css·.js를 부르는 자리
 ASSET_REF = re.compile(r'((?:src|href)="(?![a-z]+:)([^"?#]+\.(?:css|js)))(?:\?v=([^"]*))?"')
 
@@ -57,13 +58,43 @@ class Collect(HTMLParser):
             self.no_alt.append(a.get("src"))
 
 
+def check_seo(page, text, sitemap):
+    """검색에 필요한 기본: 제목·설명·대표 주소(canonical)·h1 하나, sitemap과 맞는지."""
+    if page.name != "index.html":  # 소유권 확인 파일 같은 것은 빼고
+        return []
+    rel = page.relative_to(SITE)
+    url = SITE_URL + ("" if page.parent == SITE else page.parent.relative_to(SITE).as_posix() + "/")
+    out = []
+    title = re.search(r"<title>(.*?)</title>", text, re.S)
+    desc = re.search(r'<meta name="description" content="([^"]*)"', text)
+    canon = re.search(r'<link rel="canonical" href="([^"]*)"', text)
+    if not title or not title.group(1).strip():
+        out.append(f"{rel}: <title> 없음")
+    if not desc or not (40 <= len(desc.group(1)) <= 160):
+        out.append(f"{rel}: meta description 없거나 길이가 40~160자 밖")
+    if len(re.findall(r"<h1[\s>]", text)) != 1:
+        out.append(f"{rel}: <h1>은 한 페이지에 하나")
+    if not canon:
+        out.append(f"{rel}: <link rel=\"canonical\"> 없음")
+    elif canon.group(1) == url:
+        if url not in sitemap:
+            out.append(f"{rel}: sitemap.xml에 {url} 없음")
+        if 'property="og:url"' not in text or f'property="og:url" content="{url}"' not in text:
+            out.append(f"{rel}: og:url이 {url}이 아님")
+    elif url in sitemap:  # 다른 주소가 대표인 사본(개인정보처리방침)은 sitemap에 넣지 않는다
+        out.append(f"{rel}: 대표 주소가 {canon.group(1)}인데 sitemap에 들어 있음")
+    return out
+
+
 def main():
     bad, external = [], set()
     pages = sorted(SITE.rglob("*.html"))
     if "--fix" in sys.argv:
         fix_versions(pages)
+    sitemap = set(re.findall(r"<loc>([^<]+)</loc>", (SITE / "sitemap.xml").read_text(encoding="utf-8")))
     for page in pages:
         text = page.read_text(encoding="utf-8")
+        bad += check_seo(page, text, sitemap)
         for m in ASSET_REF.finditer(text):
             target = (page.parent / unquote(m.group(2))).resolve()
             if target.exists() and m.group(3) != asset_version(target):
