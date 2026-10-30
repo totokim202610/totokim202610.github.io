@@ -22,6 +22,9 @@ assets/site.css       공통 스타일(색 토큰·라이트/다크)
 assets/site.js        갤러리 좌우 단추
 assets/jeong/         정 그림(phone/ 8장, tablet/ 3장, 아이콘, 피처 그래픽, chars/ 캐릭터)
 assets/ppyong/        뿅 그림(같은 구성)
+sitemap.xml           검색 엔진용 페이지 목록(페이지를 더하거나 고치면 <loc>·<lastmod>도 고쳐요)
+robots.txt            모두 허용 + sitemap 주소
+googledd2337cf31b412ab.html  Google Search Console 소유권 확인(지우지 않아요)
 tools/build_assets.py 앱 저장소에서 그림을 웹용으로 다시 만드는 스크립트
 tools/check_links.py  깨진 링크·그림·alt 검사
 ```
