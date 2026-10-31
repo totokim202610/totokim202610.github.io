@@ -36,6 +36,8 @@
 
 /* 뿅: 무대 그라데이션(stageTop → stageBottom) */
 .app-ppyong { --hero-a: #FFE9EC; --hero-b: #FFD3DB; }
+/* 연: 복숭아 → 분홍(연 앱 아이콘 색) */
+.app-yeon { --hero-a: #FFEFE6; --hero-b: #FFCFD9; }
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -58,7 +60,7 @@
     --focus: #FFC2CF;
     --btn-bg: #C8506A;
   }
-  .app-ppyong { --hero-a: #3A2E45; --hero-b: #4E3A55; }
+  .app-ppyong, .app-yeon { --hero-a: #3A2E45; --hero-b: #4E3A55; }
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -101,6 +103,7 @@ a { color: var(--primary-deep); text-underline-offset: 3px; }
 .topnav a { font-size: 14px; font-weight: 700; color: var(--text-sub); text-decoration: none; padding: 7px 12px; border-radius: var(--r-chip); transition: background .15s, color .15s; }
 .topnav a:hover { background: var(--primary-soft); color: var(--text); }
 .topnav a[aria-current="page"] { background: var(--primary-soft); color: var(--primary-deep); }
+@media (max-width: 400px) { .topbar .wrap { gap: 6px; } .brand { gap: 8px; font-size: 19px; } .topnav a { padding: 7px 9px; } }
 
 /* ── 공통 글 ───────────────────────────── */
 h1, h2, h3 { font-family: var(--font-cute); font-weight: 400; line-height: 1.3; margin: 0; }
@@ -159,6 +162,7 @@ h1, h2, h3 { font-family: var(--font-cute); font-weight: 400; line-height: 1.3; 
 .app-card h2 a { color: inherit; text-decoration: none; }
 .app-card h2 a::after { content: ""; position: absolute; inset: 0; z-index: 3; border-radius: 28px; }
 .app-card h2 a:focus-visible { outline: none; }
+.app-card .badge { position: absolute; left: 16px; top: 16px; z-index: 2; padding: 3px 10px; border-radius: var(--r-chip); background: var(--surface); color: var(--primary-deep); border: 1.5px dashed color-mix(in srgb, var(--primary) 75%, var(--line)); font-size: 12.5px; font-weight: 700; line-height: 1.5; box-shadow: var(--shadow); }
 .app-card .more { position: absolute; right: 16px; bottom: 16px; z-index: 2; box-shadow: var(--shadow-lg); pointer-events: none; }
 .app-card:hover .more { transform: translateY(-1px); }
 
@@ -180,6 +184,7 @@ h1, h2, h3 { font-family: var(--font-cute); font-weight: 400; line-height: 1.3; 
 .app-hero .chips { margin-top: 16px; }
 .app-hero .actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 18px; }
 .app-hero .actions .soon { margin: 0; }
+.app-hero .actions.only { margin-bottom: 8px; } /* QR이 없는 출시 전 앱: 넓은 화면에서는 아래 둥근 띠와 더 띄운다 */
 .qr { display: none; align-items: center; gap: 14px; margin: 18px 0 64px; padding: 12px 16px 12px 12px; width: fit-content; border-radius: var(--r-btn); background: var(--surface); border: 1px solid var(--line); }
 .qr img { width: 112px; height: 112px; border-radius: 10px; background: #fff; padding: 4px; flex: none; }
 .qr figcaption { font-weight: 700; font-size: 14px; line-height: 1.45; color: var(--text); }
@@ -195,6 +200,7 @@ h1, h2, h3 { font-family: var(--font-cute); font-weight: 400; line-height: 1.3; 
 .app-hero .art .float.a { left: -12%; top: 22%; }
 .app-hero .art .float.b { right: -10%; top: 4%; animation-delay: -1.3s; }
 .app-hero .art .float.c { right: -8%; bottom: 22%; animation-delay: -2.6s; }
+.app-yeon .app-hero .art { width: min(92%, 380px); }
 @keyframes bob { 50% { transform: translateY(-7px) rotate(3deg); } }
 
 /* ── 갤러리 ────────────────────────────── */
@@ -253,6 +259,12 @@ h1, h2, h3 { font-family: var(--font-cute); font-weight: 400; line-height: 1.3; 
 .fold-item h3 { font-size: 19px; margin-bottom: 4px; }
 .fold-item p { margin: 0; font-size: 15px; color: var(--text-sub); line-height: 1.6; }
 
+/* ── 캐릭터 고르기(연) ─────────────────── */
+.cast { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 18px; padding: 16px 10px 12px; border-radius: var(--r-card); background: var(--surface-2); border: 1px dashed color-mix(in srgb, var(--primary) 40%, var(--line)); }
+.cast figure { margin: 0; text-align: center; }
+.cast img { width: 100%; max-width: 120px; margin: 0 auto; filter: drop-shadow(0 4px 8px rgba(120,60,60,.12)); }
+.cast figcaption { margin-top: 4px; font-family: var(--font-cute); font-size: 16px; color: var(--text); }
+
 /* ── 개인정보 ─────────────────────────── */
 .privacy { position: relative; overflow: hidden; border-radius: 28px; padding: 26px 20px 22px; background: linear-gradient(155deg, var(--surface) 30%, var(--primary-soft) 160%); border: 1px solid var(--line); box-shadow: var(--shadow); }
 .privacy .sec-head { padding-right: 96px; }
@@ -310,6 +322,7 @@ h1, h2, h3 { font-family: var(--font-cute); font-weight: 400; line-height: 1.3; 
 .post-apps .duo + .duo { margin-top: 12px; }
 .post-apps .duo { text-decoration: none; color: var(--text); transition: transform .15s, box-shadow .15s; }
 .post-apps .duo:hover { transform: translateY(-1px); box-shadow: var(--shadow-lg); }
+.post-apps .duo .tag-soon { display: inline-block; font-family: var(--font-ui); font-size: 12px; font-weight: 700; color: var(--primary-deep); border: 1.5px dashed color-mix(in srgb, var(--primary) 75%, var(--line)); padding: 0 8px; border-radius: var(--r-chip); vertical-align: 3px; white-space: nowrap; }
 .post-apps .duo .go { font-weight: 700; color: var(--primary-deep); font-size: 15px; }
 .notes-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
 .notes-list a { display: grid; gap: 0; border-radius: var(--r-card); overflow: hidden; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); color: var(--text); text-decoration: none; transition: transform .15s, box-shadow .15s; }
@@ -359,13 +372,14 @@ h1, h2, h3 { font-family: var(--font-cute); font-weight: 400; line-height: 1.3; 
   .hero-cast picture:nth-child(1) { width: 150px; }
   .hero-cast picture:nth-child(2) { width: 190px; }
   .hero-cast picture:nth-child(3) { width: 120px; }
-  .apps { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .apps { grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .app-card .shot { height: 340px; }
   .app-card .shot img { width: 236px; }
   .app-hero { padding-top: 44px; }
   .app-hero .wrap { grid-template-columns: 1.15fr .85fr; align-items: center; column-gap: 32px; }
   .app-hero .text { grid-column: 1; }
   .app-hero .art { grid-column: 2; width: 100%; max-width: 360px; margin: 0; }
+  .app-hero .actions.only { margin-bottom: 64px; }
   .rail.phones { grid-auto-columns: calc((100% - 3 * 14px) / 4); }
   .rail.wide { grid-auto-columns: 46%; }
   .rail { margin: 0; padding-left: 0; padding-right: 0; scroll-padding: 0; }

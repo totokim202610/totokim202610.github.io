@@ -16,6 +16,7 @@ GitHub Pages(계정 `totokim202610`, 저장소 `totokim202610.github.io`)에 올
 index.html            첫 화면: 두 앱 나란히
 jeong/index.html      정 소개
 ppyong/index.html     뿅 소개
+yeon/index.html       연 소개(출시 예정 — Google Play·QR·개인정보처리방침 없음, 출시되면 .soon을 받기 단추로)
 notes/index.html      소식과 팁 목록(새 글은 맨 위에)
 notes/<글>/index.html 소식과 팁 글 하나 = 폴더 하나(영어 kebab-case), 그림은 assets/notes/<글>/
 jeong/privacy/        정 개인정보처리방침(사본)
@@ -24,6 +25,7 @@ assets/site.css       공통 스타일(색 토큰·라이트/다크)
 assets/site.js        갤러리 좌우 단추
 assets/jeong/         정 그림(phone/ 8장, tablet/ 3장, 아이콘, 피처 그래픽, chars/ 캐릭터)
 assets/ppyong/        뿅 그림(같은 구성)
+assets/yeon/          연 그림(phone/ 5장 = 앱 스냅샷 골든 bar에서 줄임, 아이콘, og.jpg 공유 미리보기, chars/ 캐릭터)
 sitemap.xml           검색 엔진용 페이지 목록(페이지를 더하거나 고치면 <loc>·<lastmod>도 고쳐요)
 robots.txt            모두 허용 + sitemap 주소
 googledd2337cf31b412ab.html  Google Search Console 소유권 확인(지우지 않아요)
