@@ -16,11 +16,12 @@ GitHub Pages(계정 `totokim202610`, 저장소 `totokim202610.github.io`)에 올
 index.html            첫 화면: 두 앱 나란히
 jeong/index.html      정 소개
 ppyong/index.html     뿅 소개
-yeon/index.html       연 소개(출시 예정 — Google Play·QR·개인정보처리방침 없음, 출시되면 .soon을 받기 단추로)
+yeon/index.html       연 소개(출시 예정 — Google Play·QR 없음, 출시되면 .soon을 받기 단추로)
+yeon/privacy/         연 개인정보처리방침(정식 주소, 원본 = 연 저장소 docs/store/privacy.html)
 notes/index.html      소식과 팁 목록(새 글은 맨 위에)
 notes/<글>/index.html 소식과 팁 글 하나 = 폴더 하나(영어 kebab-case), 그림은 assets/notes/<글>/
-jeong/privacy/        정 개인정보처리방침(사본)
-ppyong/privacy/       뿅 개인정보처리방침(사본)
+jeong/privacy/        정 개인정보처리방침(정식 주소, 원본 = 정 저장소 docs/store/privacy.html)
+ppyong/privacy/       뿅 개인정보처리방침(정식 주소, 원본 = 뿅 저장소 docs/store/privacy.html)
 assets/site.css       공통 스타일(색 토큰·라이트/다크)
 assets/site.js        갤러리 좌우 단추
 assets/jeong/         정 그림(phone/ 8장, tablet/ 3장, 아이콘, 피처 그래픽, chars/ 캐릭터)
@@ -73,4 +74,5 @@ python tools/build_assets.py <devel/apps 폴더>
 - 스토어에 올라가면 각 앱 페이지의 `.soon` 안내를 실제 Google Play 링크 단추로 바꿔요.
 - `og:url`·`og:image`는 공유 미리보기 때문에 절대 주소(`https://totokim202610.github.io/...`)예요. 저장소 이름이나 주소가 바뀌면 같이 고쳐요.
 - `assets/site.css`·`site.js`를 고치면 `python tools/check_links.py --fix`로 모든 HTML의 `?v=` 값(파일 내용 해시)을 바꿔요. 안 바꾸면 브라우저가 10분 동안 옛 파일을 써서 새 페이지가 깨져 보여요(검사가 실패해서 알려 줘요).
-- 개인정보처리방침 원본은 `jeong-privacy` 저장소(`https://urstory.github.io/jeong-privacy/`, 앱과 Google Play에 등록된 주소)예요. `jeong/privacy/`·`ppyong/privacy/`는 그 사본이라, 원본을 고치면 여기도 똑같이 복사해요.
+- 개인정보처리방침의 정식 주소는 이 사이트의 `jeong/privacy/`·`ppyong/privacy/`·`yeon/privacy/`예요(2026-11-01부터, canonical = 자기 주소, sitemap에 있음). 글의 원본은 각 앱 저장소 `docs/store/privacy.html`이라, 원본을 고치면 여기로 똑같이 복사해요(머리의 canonical·og:url 줄만 이 사이트에 있음).
+- 옛 주소 `https://urstory.github.io/jeong-privacy/`(정)·`.../ppyong/`(뿅)는 플레이 콘솔이 아직 가리킬 수 있어 페이지를 남겨 두고, canonical을 새 주소로 바꾸고 맨 위에 "새 주소로 옮겼어요" 한 줄만 넣었어요(자동 넘김 없음).
